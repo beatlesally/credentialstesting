@@ -2,7 +2,7 @@ package at.itkolleg.credentials;
 
 import java.util.List;
 
-public class DecoratorExport implements ExportCredentials{
+public abstract class DecoratorExport implements ExportCredentials{
 
     private ExportCredentials exportCredentials;
 
