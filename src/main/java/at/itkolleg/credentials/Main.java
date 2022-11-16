@@ -10,7 +10,13 @@ public class Main {
         credentialsList.add(new Credentials("www.gmx.at","123zuesss", "a.iller"));
         credentialsList.add(new Credentials("www.hotmail.com","asdfjköljk", "corban.nerum"));
         credentialsList.add(new Credentials("www.xyz.net","9fas8dfu9ee", "bobba.fett"));
-        ExportCredentials exportCredentials =  new CsvExporter();
-        exportCredentials.export(credentialsList);
+        //with Decorator
+        ExportCredentials exportHashPW =  new HashPWExportDecorator(new CsvExporter());
+        exportHashPW.export(credentialsList);
+        System.out.println("------------------------");
+        //without Decorator
+        ExportCredentials exportCSV =  new CsvExporter();
+        exportCSV.export(credentialsList);
+
     }
 }
