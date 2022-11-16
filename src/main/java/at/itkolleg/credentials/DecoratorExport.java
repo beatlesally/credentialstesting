@@ -8,12 +8,14 @@ import java.util.List;
  */
 public abstract class DecoratorExport implements ExportCredentials{
 
-    //Objekt, der der eigentliche Exporter ist, der dekoriert wird
+    //Exporter, der dekoriert wird
     private ExportCredentials exportCredentials;
 
     public DecoratorExport(ExportCredentials ex)
     {
-        this.exportCredentials = ex;
+        this.exportCredentials = ex;//setzt das Objekt, dass dekoriert werden soll
+
+
     }
 
     /**
@@ -24,6 +26,7 @@ public abstract class DecoratorExport implements ExportCredentials{
     @Override
     public void export(List<Credentials> credentialsList) {
         //Export wird mit dem gewünschten Exporter (Datenfeld) nach der Dekoration durchgeführt.
+        //Aus der Unterklasse heraus wird mit super.export die Methode aufgerufen.
         this.exportCredentials.export(credentialsList);
     }
 }

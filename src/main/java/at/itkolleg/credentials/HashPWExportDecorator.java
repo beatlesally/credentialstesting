@@ -8,11 +8,12 @@ import java.util.List;
 
 /**
  * Diese Klasse erbt von DecoratorExport und stellt einen konkreten DecoratorExport dar, der das Password in einen
- * Hash-Wert umwandelt. Nach der Dekorierung wird dann die export Methode der Mutterklasse aufgerufen.
+ * Hash-Wert umwandelt. Nach der Dekorierung wird die export Methode der Mutterklasse aufgerufen, die den Exportvorgang
+ * übernimmt.
  */
 public class HashPWExportDecorator extends DecoratorExport{
     public HashPWExportDecorator(ExportCredentials ex) {
-        super(ex);
+        super(ex); //stellt das zu dekorierende Objekt dar; wird an die Mutterklasse weitergegeben und dort als Datenfeld gespeichert
     }
 
     /**
@@ -34,14 +35,14 @@ public class HashPWExportDecorator extends DecoratorExport{
             hashPWCredentials.add(new Credentials(item.getHost(),item.getPwd(), item.getUser()));
         }
 
-        //PW aus der Liste holen, einen HashWert daraus generieren und PW als Hash speichern
+        //PW aus der Liste holen, einen HashWert daraus generieren und PW als Hash zurückspeichern/überschreiben
         for (Credentials credentials: hashPWCredentials) {
             credentials.setPwd(Hashing.sha256()
                     .hashString(credentials.getPwd(), StandardCharsets.UTF_8)
                     .toString());
         }
 
-        //export wird von der Mutterklasse mit der modifizierten Arraylist vorgenommen
+        //Exportvorgang wird von der Mutterklasse mit der modifizierten Arraylist vorgenommen
         super.export(hashPWCredentials);
     }
 }

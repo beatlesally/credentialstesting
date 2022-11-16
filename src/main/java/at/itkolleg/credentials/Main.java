@@ -19,6 +19,7 @@ public class Main {
         exportCSV.export(credentialsList);
         System.out.println("------------------------");
 
+        //add more entries
         credentialsList.add(new Credentials("www.gmail.at","36lskdlej", "a.sally"));
         credentialsList.add(new Credentials("www.enterprice.com","69asdjfsh", "corban.nerum"));
 
