@@ -17,6 +17,18 @@ public class Main {
         //without Decorator
         ExportCredentials exportCSV =  new CsvExporter();
         exportCSV.export(credentialsList);
+        System.out.println("------------------------");
+
+        credentialsList.add(new Credentials("www.gmail.at","36lskdlej", "a.sally"));
+        credentialsList.add(new Credentials("www.enterprice.com","69asdjfsh", "corban.nerum"));
+
+        //with Decorator
+        ExportCredentials exportHashPW2 =  new HashPWExportDecorator(new CsvExporter());
+        exportHashPW.export(credentialsList);
+        System.out.println("------------------------");
+        //without Decorator
+        ExportCredentials exportCSV1 =  new CsvExporter();
+        exportCSV.export(credentialsList);
 
     }
 }
