@@ -11,6 +11,7 @@ public class Main {
         credentialsList.add(new Credentials("www.hotmail.com","asdfjköljk", "corban.nerum"));
         credentialsList.add(new Credentials("www.xyz.net","9fas8dfu9ee", "bobba.fett"));
         //with Decorator
+        //mit dem neuen Decorator Objekt muss ein neues Export Objekt erzeugt werden, dass den zu dekorierenden Export darstellt
         ExportCredentials exportHashPW =  new HashPWExportDecorator(new CsvExporter());
         exportHashPW.export(credentialsList);
         System.out.println("------------------------");
